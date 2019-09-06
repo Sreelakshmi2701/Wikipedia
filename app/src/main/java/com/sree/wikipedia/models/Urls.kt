@@ -11,8 +11,8 @@ object Urls {
                 "&gpssearch=$term"+
                 "&gpslimit=$take"+
                 "&gpsoffset=$skip"+
-                "&prop=pageimages|info"+
-                "&piprop=thumbnail|url"+
+                "&prop=pageimages|info|url"+
+                "piprop=thumbnail|url"+
                 "&pithumbsize=200"+
                 "&pilimit=$take"+
                 "&wbptterms=description"+

@@ -10,13 +10,17 @@ import android.view.MenuItem
 import android.widget.SearchView
 import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.sree.wikipedia.adapters.ArticleCardRecyclerAdapter
 import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
+import com.sree.wikipedia.models.WikiSearchResult
 import com.sree.wikipedia.providers.ArticleDataProvider
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.fragment_explore.*
 
 class SearchActivity : AppCompatActivity() {
     private val articleDataProvider=com.sree.wikipedia.providers.ArticleDataProvider()
-private var adapter :ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
+private var adapter :ArticleCardRecyclerAdapter = ArticleCardRecyclerAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -24,8 +28,9 @@ private var adapter :ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
         mToolbar=findViewById(R.id.toolbar)
         setSupportActionBar(mToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        search_result_recyclerview.layoutManager= LinearLayoutManager(this)
-        search_result_recyclerview.adapter=adapter
+        var searchRecycler: RecyclerView= findViewById<RecyclerView>(R.id.search_result_recyclerview)
+        searchRecycler.layoutManager= LinearLayoutManager(this)
+        searchRecycler.adapter=adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -46,11 +51,13 @@ private var adapter :ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
       searchView.setOnQueryTextListener(
           object: SearchView.OnQueryTextListener{
               override fun onQueryTextSubmit(query: String): Boolean {
-                  articleDataProvider.search(query,0,20,{wikiResult ->
+                  articleDataProvider.search(query,0,5) { WikiSearchResult ->
+                      //adapter  = ArticleListRecyclerAdapter()
                       adapter.currentResults.clear()
-                      adapter.currentResults.addAll(wikiResult.query!!.pages.values)
-                      runOnUiThread { adapter.notifyDataSetChanged() }
-                  })
+                      adapter.currentResults.addAll(WikiSearchResult.query!!.pages)
+                      runOnUiThread { adapter.notifyDataSetChanged()
+                          refresher?.isRefreshing = true}
+                  }
                   println("updated search")
                   return false
               }
