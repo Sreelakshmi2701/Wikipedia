@@ -1,5 +1,6 @@
 package com.sree.wikipedia.providers
 
+import android.util.Log
 import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.github.kittinunf.fuel.httpGet
@@ -9,8 +10,10 @@ import com.google.gson.Gson
 import com.sree.wikipedia.models.Urls
 
 class ArticleDataProvider {
+    val TAG:String = "ArticleDataProvider"
     init {
         FuelManager.instance.baseHeaders = mapOf("User-Agent" to "Sree Wikipedia")
+
     }
 
     fun search(term: String, skip: Int, take: Int, responseHandler: (result: WikiResult) -> Unit?) {
@@ -31,8 +34,10 @@ class ArticleDataProvider {
                 if (response.httpStatusCode != 200) {
                     throw Exception("Unable to get articles")
                 }
-                val (data, _) = result
-                responseHandler.invoke(data )
+                Log.d(TAG,"response::->>"+response.toString())
+                Log.d(TAG,"response::->>"+result.toString())
+                val (data,_) = result
+                responseHandler.invoke(data as WikiResult)
             }
     }
 

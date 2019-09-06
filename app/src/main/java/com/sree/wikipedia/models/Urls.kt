@@ -12,7 +12,7 @@ object Urls {
                 "&gpslimit=$take"+
                 "&gpsoffset=$skip"+
                 "&prop=pageimages|info"+
-                "piprop=thumbnail|url"+
+                "&piprop=thumbnail|url"+
                 "&pithumbsize=200"+
                 "&pilimit=$take"+
                 "&wbptterms=description"+
@@ -24,7 +24,7 @@ object Urls {
         return BaseUrl+"?action=query"+
                 "&format=json"+
                 "&generator=random"+
-                "grnnamespace=0"+
+                "&grnnamespace=0"+
                 "&prop=pageimages|info"+
                 "&grnlimit=$take"+
                 "&inprop=url"+

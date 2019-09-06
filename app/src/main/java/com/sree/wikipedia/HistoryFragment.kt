@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_history.*
 
@@ -21,8 +22,9 @@ class HistoryFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_history, container, false)
-        history_article_recycler.layoutManager=LinearLayoutManager(context)
-        history_article_recycler.adapter=ArticleListRecyclerAdapter()
+        var hisRecycler= view.findViewById<RecyclerView>(R.id.history_article_recycler)
+        hisRecycler.layoutManager=LinearLayoutManager(context)
+        hisRecycler.adapter=ArticleListRecyclerAdapter()
         return view
     }
 

@@ -48,7 +48,7 @@ private var adapter :ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
               override fun onQueryTextSubmit(query: String): Boolean {
                   articleDataProvider.search(query,0,20,{wikiResult ->
                       adapter.currentResults.clear()
-                      adapter.currentResults.addAll(wikiResult.query!!.pages)
+                      adapter.currentResults.addAll(wikiResult.query!!.pages.values)
                       runOnUiThread { adapter.notifyDataSetChanged() }
                   })
                   println("updated search")

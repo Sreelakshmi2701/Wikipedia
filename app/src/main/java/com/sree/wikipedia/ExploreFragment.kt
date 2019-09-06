@@ -54,7 +54,7 @@ class ExploreFragment : Fragment() {
         try {
             articleProvider.getRandom(15, { wikiResult ->
                 adapter.currentResults.clear()
-                adapter.currentResults.addAll(wikiResult.query!!.pages)
+                adapter.currentResults.addAll(wikiResult.query!!.pages.values)
                 activity?.runOnUiThread {
                     adapter.notifyDataSetChanged()
                     refresher?.isRefreshing = false

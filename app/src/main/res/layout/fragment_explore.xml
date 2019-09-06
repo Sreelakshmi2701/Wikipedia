@@ -41,7 +41,7 @@
         android:layout_gravity="center_vertical"
         android:layout_margin="8dp"
         android:tint="@color/colorPrimaryDark"
-        android:src="@drawable/ic_search_black_24dp"
+        android:src="@drawable/ic_dashboard_black_24dp"
          />
     <TextView
         android:layout_width="match_parent"
@@ -54,12 +54,7 @@
      </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:layout_collapseMode="parallax"
-                />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
