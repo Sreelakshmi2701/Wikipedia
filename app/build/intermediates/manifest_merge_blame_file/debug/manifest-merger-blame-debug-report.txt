@@ -25,35 +25,34 @@
 17-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:9:13-58
 18        android:supportsRtl="true"
 18-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:10:13-39
-19        android:testOnly="true"
-20        android:theme="@style/AppTheme" >
-20-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:11:13-44
-21        <activity android:name="com.sree.wikipedia.SearchActivity" >
-21-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:12:9-13:20
-21-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:12:19-49
-22        </activity>
-23        <activity
-23-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:14:9-23:20
-24            android:name="com.sree.wikipedia.MainActivity"
-24-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:15:17-45
-25            android:label="@string/title_activity_main"
-25-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:16:17-60
-26            android:theme="@style/AppTheme" >
-26-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:17:17-48
-27            <intent-filter>
-27-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:18:13-22:29
-28                <action android:name="android.intent.action.MAIN" />
-28-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:19:17-68
-28-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:19:25-66
-29
-30                <category android:name="android.intent.category.LAUNCHER" />
-30-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:21:17-76
-30-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:21:27-74
-31            </intent-filter>
-32        </activity>
-33        <activity android:name="com.sree.wikipedia.ArticleDetailActivity" />
-33-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:24:9-58
-33-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:24:19-56
-34    </application>
-35
-36</manifest>
+19        android:theme="@style/AppTheme" >
+19-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:11:13-44
+20        <activity android:name="com.sree.wikipedia.SearchActivity" >
+20-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:12:9-13:20
+20-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:12:19-49
+21        </activity>
+22        <activity
+22-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:14:9-23:20
+23            android:name="com.sree.wikipedia.MainActivity"
+23-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:15:17-45
+24            android:label="@string/title_activity_main"
+24-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:16:17-60
+25            android:theme="@style/AppTheme" >
+25-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:17:17-48
+26            <intent-filter>
+26-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:18:13-22:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:19:17-68
+27-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:19:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:21:17-76
+29-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:21:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity android:name="com.sree.wikipedia.ArticleDetailActivity" />
+32-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:24:9-58
+32-->G:\AndroidProjects\Wikipedia\app\src\main\AndroidManifest.xml:24:19-56
+33    </application>
+34
+35</manifest>

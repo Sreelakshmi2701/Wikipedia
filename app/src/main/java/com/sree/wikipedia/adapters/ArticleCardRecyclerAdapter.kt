@@ -4,14 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sree.wikipedia.Holders.CardHolder
+import com.sree.wikipedia.models.WikiPage
 import com.sree.wikipedia.R
 
 class ArticleCardRecyclerAdapter() : RecyclerView.Adapter<CardHolder>() {
+    val currentResults: ArrayList<WikiPage> = ArrayList<WikiPage>()
     override fun getItemCount(): Int {
-        return 15
+        return currentResults.size
     }
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
+        var page= currentResults[position]
+        holder?.updateWithPage(page)
 
     }
 

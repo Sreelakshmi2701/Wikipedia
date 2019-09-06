@@ -9,9 +9,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import androidx.core.content.getSystemService
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
+import com.sree.wikipedia.providers.ArticleDataProvider
+import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
-
+    private val articleDataProvider=com.sree.wikipedia.providers.ArticleDataProvider()
+private var adapter :ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -19,6 +24,8 @@ class SearchActivity : AppCompatActivity() {
         mToolbar=findViewById(R.id.toolbar)
         setSupportActionBar(mToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        search_result_recyclerview.layoutManager= LinearLayoutManager(this)
+        search_result_recyclerview.adapter=adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -39,6 +46,11 @@ class SearchActivity : AppCompatActivity() {
       searchView.setOnQueryTextListener(
           object: SearchView.OnQueryTextListener{
               override fun onQueryTextSubmit(query: String): Boolean {
+                  articleDataProvider.search(query,0,20,{wikiResult ->
+                      adapter.currentResults.clear()
+                      adapter.currentResults.addAll(wikiResult.query!!.pages)
+                      runOnUiThread { adapter.notifyDataSetChanged() }
+                  })
                   println("updated search")
                   return false
               }
