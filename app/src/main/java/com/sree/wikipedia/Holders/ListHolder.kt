@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import com.sree.wikipedia.ArticleDetailActivity
+import com.sree.wikipedia.MyApplication
 import com.sree.wikipedia.models.WikiPage
 import com.sree.wikipedia.R
 
@@ -19,6 +20,7 @@ private val articleImageView: ImageView=itemView.findViewById<ImageView>(R.id.re
 
     init{
         itemView.setOnClickListener{ view: View? ->
+            MyApplication.userVisitedArticles.add(currentPage)
             var detailPageIntent= Intent(itemView.context, ArticleDetailActivity::class.java)
             var pageJson = Gson().toJson(currentPage)
             detailPageIntent.putExtra("page",pageJson)

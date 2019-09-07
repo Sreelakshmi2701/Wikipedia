@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.sree.wikipedia.adapters.ArticleCardRecyclerAdapter
+import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
 import com.sree.wikipedia.providers.ArticleDataProvider
 import kotlinx.android.synthetic.main.fragment_explore.*
 
@@ -24,7 +25,7 @@ class ExploreFragment : Fragment() {
     private val articleProvider: ArticleDataProvider = ArticleDataProvider()
     var searchCardView: CardView? = null
     var exploreRecycler: RecyclerView? = null
-    var adapter: ArticleCardRecyclerAdapter = ArticleCardRecyclerAdapter()
+    var adapter: ArticleListRecyclerAdapter = ArticleListRecyclerAdapter()
     var refresher: SwipeRefreshLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
