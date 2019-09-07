@@ -27,7 +27,9 @@ class HistoryFragment : Fragment() {
         var hisRecycler= view.findViewById<RecyclerView>(R.id.history_article_recycler)
         hisRecycler.layoutManager=LinearLayoutManager(context)
         hisRecycler.adapter= articleCardRecyclerAdapter
+        articleCardRecyclerAdapter.currentResults.clear()
         articleCardRecyclerAdapter.currentResults.addAll(MyApplication.userVisitedArticles)
+
         articleCardRecyclerAdapter.notifyDataSetChanged()
         return view
     }
