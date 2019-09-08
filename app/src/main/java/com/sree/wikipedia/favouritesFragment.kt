@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sree.wikipedia.adapters.ArticleCardRecyclerAdapter
 import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
+import com.sree.wikipedia.models.WikiPage
 import kotlinx.android.synthetic.main.fragment_favourites.*
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -30,7 +32,12 @@ class favouritesFragment : Fragment() {
         favRecycler.layoutManager=LinearLayoutManager(context)
         favRecycler.adapter= articleCardRecyclerAdapter
         articleCardRecyclerAdapter.currentResults.clear()
-        articleCardRecyclerAdapter.currentResults.addAll(MyApplication.usersFavouriteArticles)
+       // val listOfFav: Collection<WikiPage> = MyApplication.usersFavouriteArticles.values
+
+        MyApplication.usersFavouriteArticles.values.forEach {
+            articleCardRecyclerAdapter.currentResults.add(it)
+        }
+        //articleCardRecyclerAdapter.currentResults.add(it)
         articleCardRecyclerAdapter.notifyDataSetChanged()
 
         return view

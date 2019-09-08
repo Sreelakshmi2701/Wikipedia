@@ -2,6 +2,7 @@ package com.sree.wikipedia
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -13,6 +14,7 @@ import com.sree.wikipedia.models.WikiPage
 import kotlinx.android.synthetic.main.activity_article_detail.*
 
 import android.view.View
+import kotlinx.android.synthetic.main.article_list_item.*
 
 
 class ArticleDetailActivity : AppCompatActivity() {
@@ -39,18 +41,19 @@ class ArticleDetailActivity : AppCompatActivity() {
     }
 
     private fun setonClickListner() {
-        imgFavIcon.setOnClickListener(object : View.OnClickListener {
+        imgFavIcon.setOnTouchListener(object : View.OnTouchListener {
             internal var button01pos = 0
-            override fun onClick(v: View) {
+            override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 if (button01pos == 0) {
                     imgFavIcon.setImageResource(R.drawable.fav_icon_empty);
                     button01pos = 1;
-                    MyApplication.usersFavouriteArticles.remove(currentPage)
+                    MyApplication.usersFavouriteArticles.remove(currentPage?.pageid.toString())
                 } else if (button01pos == 1) {
                     imgFavIcon.setImageResource(R.drawable.fav_icon_filled);
                     button01pos = 0;
-                    MyApplication.usersFavouriteArticles.add(currentPage)
+                    MyApplication.usersFavouriteArticles.put(currentPage?.pageid.toString(),currentPage)
                 }
+                return true;
             }
         })
     }

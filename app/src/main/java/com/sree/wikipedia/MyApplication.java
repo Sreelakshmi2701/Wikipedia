@@ -6,6 +6,8 @@ import android.content.Context;
 import com.sree.wikipedia.models.WikiPage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyApplication extends Application {
 
@@ -23,5 +25,5 @@ public class MyApplication extends Application {
    // val userVisitedArticles: ArrayList<WikiPage> = ArrayList<WikiPage>()
 
     public static ArrayList<WikiPage> userVisitedArticles =new ArrayList<WikiPage>();
-    public static ArrayList<WikiPage> usersFavouriteArticles =new ArrayList<WikiPage>();
+    public static Map<String, WikiPage> usersFavouriteArticles =new HashMap<String, WikiPage>();
 }
