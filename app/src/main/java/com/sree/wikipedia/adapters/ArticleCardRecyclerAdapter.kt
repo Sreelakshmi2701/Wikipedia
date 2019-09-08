@@ -15,6 +15,7 @@ class ArticleCardRecyclerAdapter() : RecyclerView.Adapter<CardHolder>() {
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         var page= currentResults[position]
+        //holder?.updateWithPage(page)
         holder?.updateWithPage(page)
 
     }

@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_favourites.*
  * A simple [Fragment] subclass.
  */
 class favouritesFragment : Fragment() {
+    val  articleCardRecyclerAdapter =ArticleCardRecyclerAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +28,11 @@ class favouritesFragment : Fragment() {
         val view= inflater.inflate(R.layout.fragment_favourites, container, false)
         var favRecycler= view.findViewById<RecyclerView>(R.id.favourites_article_recycler)
         favRecycler.layoutManager=LinearLayoutManager(context)
-        favRecycler.adapter= ArticleCardRecyclerAdapter()
+        favRecycler.adapter= articleCardRecyclerAdapter
+        articleCardRecyclerAdapter.currentResults.clear()
+        articleCardRecyclerAdapter.currentResults.addAll(MyApplication.usersFavouriteArticles)
+        articleCardRecyclerAdapter.notifyDataSetChanged()
+
         return view
     }
 
