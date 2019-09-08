@@ -53,7 +53,7 @@ class ExploreFragment : Fragment() {
     private fun getRandomArticles() {
         refresher?.isRefreshing = true
         try {
-            articleProvider.getRandom(15, { wikiResult ->
+            articleProvider.getRandom(25, { wikiResult ->
                 adapter.currentResults.clear()
                 adapter.currentResults.addAll(wikiResult.query!!.pages.values)
                 activity?.runOnUiThread {

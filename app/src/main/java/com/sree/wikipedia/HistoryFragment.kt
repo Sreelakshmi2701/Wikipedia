@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sree.wikipedia.MyApplication.userVisitedArticles
 import com.sree.wikipedia.adapters.ArticleCardRecyclerAdapter
 import com.sree.wikipedia.adapters.ArticleListRecyclerAdapter
+import com.sree.wikipedia.models.WikiResult
 import kotlinx.android.synthetic.main.fragment_history.*
 
 /**

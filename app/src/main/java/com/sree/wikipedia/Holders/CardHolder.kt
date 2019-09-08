@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import com.sree.wikipedia.ArticleDetailActivity
 import com.sree.wikipedia.MyApplication
+import com.sree.wikipedia.MyApplication.userVisitedArticles
 import com.sree.wikipedia.models.WikiPage
 import com.sree.wikipedia.R
 
@@ -20,7 +21,16 @@ private val articleImageView: ImageView=itemView.findViewById<ImageView>(R.id.ar
 
     init{
         itemView.setOnClickListener{ view: View? ->
-            MyApplication.userVisitedArticles.add(currentPage)
+
+            var historyalreadyPresent :Boolean=false
+            for(x in 0 until userVisitedArticles.size){
+                if(userVisitedArticles[x].pageid==currentPage?.pageid){
+                    historyalreadyPresent=true
+                }
+            }
+            if(!historyalreadyPresent){
+                MyApplication.userVisitedArticles.add(currentPage)
+            }
 
             var detailPageIntent= Intent(itemView.context,ArticleDetailActivity::class.java)
             var pageJson = Gson().toJson(currentPage)
@@ -31,8 +41,12 @@ private val articleImageView: ImageView=itemView.findViewById<ImageView>(R.id.ar
     fun updateWithPage(page:WikiPage){
         currentPage=page
         titleTextView.text =page.title
+        articleImageView.setImageResource(R.drawable.ic_image_black_24dp)
         if(page.thumbnail!=null){
-            Picasso.with(itemView.context).load(page.thumbnail!!.source).into(articleImageView)
+            Picasso.with(itemView.context).load(page.thumbnail!!.source).placeholder(R.drawable.ic_image_black_24dp).into(articleImageView)
+        } else {
+            Picasso.with(itemView.context).load(R.drawable.ic_image_black_24dp).into(articleImageView)
+
         }
     }
 

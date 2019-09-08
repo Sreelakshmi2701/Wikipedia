@@ -20,7 +20,16 @@ private val articleImageView: ImageView=itemView.findViewById<ImageView>(R.id.re
 
     init{
         itemView.setOnClickListener{ view: View? ->
-            MyApplication.userVisitedArticles.add(currentPage)
+            var historyalreadyPresent :Boolean=false
+            for(x in 0 until MyApplication.userVisitedArticles.size){
+                if(MyApplication.userVisitedArticles[x].pageid==currentPage?.pageid){
+                    historyalreadyPresent=true
+                }
+            }
+            if(!historyalreadyPresent){
+                MyApplication.userVisitedArticles.add(currentPage)
+            }
+            //MyApplication.userVisitedArticles.add(currentPage)
             var detailPageIntent= Intent(itemView.context, ArticleDetailActivity::class.java)
             var pageJson = Gson().toJson(currentPage)
             detailPageIntent.putExtra("page",pageJson)
@@ -31,7 +40,10 @@ private val articleImageView: ImageView=itemView.findViewById<ImageView>(R.id.re
         currentPage=page
         titleTextView.text =page.title
         if(page.thumbnail!=null){
-            Picasso.with(itemView.context).load(page.thumbnail!!.source).into(articleImageView)
+            Picasso.with(itemView.context).load(page.thumbnail!!.source).placeholder(R.drawable.ic_image_black_24dp).into(articleImageView)
+        } else {
+            Picasso.with(itemView.context).load(R.drawable.ic_image_black_24dp).into(articleImageView)
+
         }
 
     }
